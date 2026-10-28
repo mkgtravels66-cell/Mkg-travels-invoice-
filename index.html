@@ -8,26 +8,47 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-@media print{
-    @page{
-        size:A4 landscape;
-        margin:5mm;
+@media print {
+
+    @page {
+        size: A4 landscape;
+        margin: 5mm;
     }
 
-    html,body{
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-        background:#fff;
+    body {
+        margin:0 !important;
+        padding:0 !important;
+        background:white !important;
     }
 
-    .print-btn{
-        display:none;
+    .print-shadow {
+        box-shadow:none !important;
+        border:none !important;
     }
 
-    .print-shadow{
-        box-shadow:none!important;
+    .invoice {
+        width: 100% !important;
+        transform: scale(0.72);
+        transform-origin: top left;
+        height: auto;
+    }
+
+    input {
+        height:18px !important;
+        padding:0 !important;
+    }
+
+    table td,
+    table th {
+        padding:3px !important;
+    }
+
+    .signature {
+        margin-top:10px !important;
+    }
+
+    .print-btn {
+        display:none !important;
     }
 }
 </style>
