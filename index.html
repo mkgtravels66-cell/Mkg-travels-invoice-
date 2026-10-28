@@ -6,24 +6,23 @@
     <title>MKG Travels Invoice</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    @media print {
-        @page {
-            size: A4 landscape;
-            margin: 5mm;
-        }
-        body {
-            transform: scale(0.55);
-            transform-origin: top left;
-            width: 181%;
-            background-color: white !important;
-        }
-        .print-shadow {
-            box-shadow: none !important;
-        }
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 0mm;
     }
-    </style>
-</head>
-<body class="bg-slate-100 text-slate-800 p-2 md:p-6 min-h-screen flex justify-center items-start">
+    body {
+        transform: scale(0.42);
+        transform-origin: top left;
+        width: 235%;
+        background-color: white !important;
+    }
+    .print-shadow {
+        box-shadow: none !important;
+    }
+}
+ </style>
+    <body class="bg-slate-100 text-slate-800 p-2 md:p-6 min-h-screen flex justify-center items-start">
 
     <div class="w-full max-w-4xl bg-white p-4 md:p-8 rounded-xl shadow-xl border border-slate-200 print-shadow">
         
