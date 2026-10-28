@@ -11,13 +11,16 @@
         size: A4 landscape;
         margin: 0mm;
     }
-    body {
-        transform: scale(0.30);
-        transform-origin: top left;
-        width: 330%;
-        height: 100vh;
-        overflow: hidden;
+    html, body {
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
         background-color: white !important;
+    }
+    body {
+        transform: scale(0.25);
+        transform-origin: top left;
+        width: 400% !important;
     }
     .print-shadow {
         box-shadow: none !important;
