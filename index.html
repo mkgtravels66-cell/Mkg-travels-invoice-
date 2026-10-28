@@ -36,12 +36,14 @@
    @media print {
   @page {
     size: A4 landscape;
+    margin: 5mm;
   }
   body {
-    transform: scale(0.5);
+    transform: scale(0.45); /* இங்கு 0.5-க்கு பதிலாக 0.45 அல்லது 0.4 கொடுக்கவும் */
     transform-origin: top left;
+    width: 220%;
   }
-}
+   }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 p-4 md:p-8 min-h-screen flex justify-center items-start">
