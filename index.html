@@ -12,39 +12,39 @@
 
     @page {
         size: A4 landscape;
-        margin: 5mm;
+        margin: 0;
     }
 
     body {
-        margin:0 !important;
-        padding:0 !important;
-        background:white !important;
-    }
-
-    .print-shadow {
-        box-shadow:none !important;
-        border:none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
     }
 
     .invoice {
-        width: 100% !important;
+        width: 1120px !important;
+        min-height: 0 !important;
+        padding: 20px !important;
         transform: scale(0.72);
         transform-origin: top left;
-        height: auto;
+    }
+
+    table {
+        font-size: 11px !important;
+    }
+
+    th, td {
+        padding: 2px !important;
+        height: 22px !important;
     }
 
     input {
-        height:18px !important;
-        padding:0 !important;
-    }
-
-    table td,
-    table th {
-        padding:3px !important;
+        height: 16px !important;
+        font-size: 11px !important;
     }
 
     .signature {
-        margin-top:10px !important;
+        margin-top: 5px !important;
     }
 
     .print-btn {
