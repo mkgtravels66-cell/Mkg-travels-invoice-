@@ -12,44 +12,24 @@
 
     @page {
         size: A4 landscape;
-        margin: 0;
+        margin: 5mm;
     }
 
     body {
-        margin:0 !important;
-        padding:0 !important;
-        overflow:hidden !important;
+        margin:0;
+        padding:0;
+        background:white;
     }
 
     .invoice {
-        width: 1000px !important;
-        transform: scale(0.62);
+        width: 140mm;      /* A4 landscape-ன் பாதி அகலம் */
+        height: 95mm;      /* Half sheet height */
+        transform: scale(0.65);
         transform-origin: top left;
     }
 
-    .p-6 {
-        padding: 10px !important;
-    }
-
-    .mt-16 {
-        margin-top: 5px !important;
-    }
-
-    .mb-4 {
-        margin-bottom: 5px !important;
-    }
-
-    table th,
-    table td {
-        padding: 1px !important;
-    }
-
-    input {
-        height: 14px !important;
-    }
-
     .print-btn {
-        display:none !important;
+        display:none;
     }
 }
 </style>
