@@ -1,475 +1,185 @@
-ó<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MKG Travels Invoice</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-@media print {
-    @page {
-        size: A4 landscape;
-        margin: 5mm;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKG Travels Invoice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    @media print {
+        @page {
+            size: A4 landscape;
+            margin: 5mm;
+        }
+        body {
+            transform: scale(0.68);
+            transform-origin: top center;
+            background-color: white !important;
+            width: 100% !important;
+        }
+        .print-shadow {
+            display: none !important;
+        }
     }
-    body {
-        transform: scale(0.68);
-        transform-origin: top center;
-        background-color: white !important;
-        width: 100% !important;
-    }
-    .print-shadow {
-        box-shadow: none !important;
-    }
-}
-</style>
+    </style>
 </head>
-
-<body class="bg-slate-100 p-4">
-
-<div class="max-w-6xl mx-auto bg-white rounded-xl shadow-xl p-6 print-shadow">
-
-<div class="text-center border-b-2 pb-3 mb-4">
-<p class="text-xs font-semibold">
-|| SRI LAKSHMI NARASIMHA PERUMAL THUNAI ||
-</p>
-
-<h1 class="text-3xl font-black text-blue-900">
-MKG TRAVELS
-</h1>
-
-<p class="text-sm">
-Tourist & Commercial Vehicle Services
-</p>
-
-<p class="text-xs mt-1">
-Phone : 9361819360
-</p>
-</div>
-
-<div class="grid grid-cols-4 gap-4 text-sm mb-4">
-
-<div>
-<label>Bill No</label>
-<input class="w-full border-b">
-</div>
-
-<div>
-<label>Date</label>
-<input type="date" class="w-full border-b">
-</div>
-
-<div>
-<label>Vehicle No</label>
-<input value="TN32BF2866" class="w-full border-b font-bold">
-</div>
-
-<div>
-<label>Mobile</label>
-<input class="w-full border-b">
-</div>
-
-</div>
-
-<div class="grid grid-cols-3 gap-4 mb-4">
-
-<div>
-<label>Customer Name</label>
-<input class="w-full border-b">
-</div>
-
-<div>
-<label>Starting Place</label>
-<input class="w-full border-b">
-</div>
-
-<div>
-<label>Destination</label>
-<input class="w-full border-b">
-</div>
-
-</div>
-
-<div class="bg-slate-800 text-white p-2 rounded mb-3">
-KM & TIME SUMMARY
-</div>
-
-<div class="grid grid-cols-4 gap-3 mb-4">
-
-<div class="border rounded p-2">
-<label>Starting KM</label>
-<input id="startkm" class="w-full border-b">
-</div>
-
-<div class="border rounded p-2">
-<label>Starting Time</label>
-<input type="time" class="w-full border-b">
-</div>
-
-<div class="border rounded p-2">
-<label>Closing KM</label>
-<input id="closekm" class="w-full border-b">
-</div>
-
-<div class="border rounded p-2">
-<label>Closing Time</label>
-<input type="time" class="w-full border-b">
-</div>
-
-<div class="border rounded p-2">
-<label>Total KM</label>
-<input id="totalkm" readonly class="w-full border-b bg-gray-100">
-</div>
-
-<div class="border rounded p-2">
-<label>Total Hours</label>
-<input class="w-full border-b">
-</div>
-
-</div>
-
-<div class="bg-slate-800 text-white p-2 rounded mb-2">
-CHARGES DETAILS
-</div>
-
-<table class="w-full border-collapse text-sm">
-
-<thead>
-
-<tr class="bg-gray-200">
-
-<th class="border p-2">
-S.No
-</th>
-
-<th class="border p-2">
-Particulars
-</th>
-
-<th class="border p-2">
-Qty
-</th>
-
-<th class="border p-2">
-Rate
-</th>
-
-<th class="border p-2">
-Amount
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td class="border p-2">1</td>
-
-<td class="border p-2">
-Kilometer Charges
-</td>
-
-<td class="border p-2">
-<input id="kmqty" class="w-full">
-</td>
-
-<td class="border p-2">
-<input id="kmrate" class="w-full">
-</td>
-
-<td class="border p-2">
-<input id="kmamount" class="w-full amount">
-</td>
-
-</tr>
-
-<tr>
-
-<td class="border p-2">2</td>
-
-<td class="border p-2">
-Extra Kilometer Charges
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full amount">
-</td>
-
-</tr>
-
-<tr>
-
-<td class="border p-2">3</td>
-
-<td class="border p-2">
-Extra Hours Charges
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full amount">
-</td>
-
-</tr>
-
-<tr>
-
-<td class="border p-2">4</td>
-
-<td class="border p-2">
-Driver Batta
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full amount">
-</td>
-
-        <tr>
-
-<td class="border p-2">5</td>
-
-<td class="border p-2">
-Toll Gate Charges
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full amount">
-</td>
-
-</tr>
-
-<tr>
-
-<td class="border p-2">6</td>
-
-<td class="border p-2">
-Parking Charges
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full amount">
-</td>
-
-</tr>
-
-<tr>
-
-<td class="border p-2">7</td>
-
-<td class="border p-2">
-State Permit / Border Tax
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full">
-</td>
-
-<td class="border p-2">
-<input class="w-full amount">
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<div class="grid grid-cols-2 gap-6 mt-6">
-
-<div>
-
-<label class="font-semibold">
-Amount in Words
-</label>
-
-<input class="w-full border-b mb-4">
-
-<p class="text-sm">
-• Toll Gate & Parking Charges Extra
-</p>
-
-<p class="text-sm">
-• Please Verify Meter Before Signing
-</p>
-
-<p class="font-bold mt-3">
-GPay / PhonePe :
-9940137426
-</p>
-
-</div>
-
-<div>
-
-<div class="flex justify-between border-b py-2">
-
-<span>
-Sub Total
-</span>
-
-<input id="subtotal"
-class="text-right w-32">
-
-</div>
-
-<div class="flex justify-between border-b py-2">
-
-<span>
-Advance Paid
-</span>
-
-<input id="advance"
-class="text-right w-32">
-
-</div>
-
-<div class="flex justify-between py-3 text-lg font-bold text-blue-900">
-
-<span>
-Net Balance
-</span>
-
-<input id="balance"
-class="text-right w-32">
-
-</div>
-
-</div>
-
-</div>
-
-<div class="flex justify-between mt-16">
-
-<div class="text-center">
-
-<div class="h-12"></div>
-
-<hr>
-
-Customer Signature
-
-</div>
-
-<div class="text-center">
-
-<p class="font-bold text-blue-900">
-MKG TRAVELS
-</p>
-
-<div class="h-12"></div>
-
-<hr>
-
-Driver Signature
-
-</div>
-
-</div>
-
-</div>
-
-<div class="text-center mt-8 print-btn">
-
-<button
-onclick="window.print()"
-class="bg-blue-900 text-white px-8 py-3 rounded-lg">
-
-🖨️ Print / Save PDF
-
-</button>
-
-</div>
-
-<script>
-
-document.getElementById("closekm").addEventListener("input",calcKm);
-document.getElementById("startkm").addEventListener("input",calcKm);
-
-function calcKm(){
-
-let s=Number(document.getElementById("startkm").value);
-
-let c=Number(document.getElementById("closekm").value);
-
-document.getElementById("totalkm").value=c-s;
-
-}
-
-document.querySelectorAll(".amount").forEach(i=>{
-
-i.addEventListener("input",calcTotal);
-
-});
-
-document.getElementById("advance").addEventListener("input",calcTotal);
-
-function calcTotal(){
-
-let total=0;
-
-document.querySelectorAll(".amount").forEach(i=>{
-
-total+=Number(i.value)||0;
-
-});
-
-document.getElementById("subtotal").value=total;
-
-let adv=Number(document.getElementById("advance").value)||0;
-
-document.getElementById("balance").value=total-adv;
-
-}
-
-</script>
+<body class="bg-slate-100 text-slate-800 p-2 md:p-6 min-h-screen flex flex-col items-center">
+
+    <!-- Top Action Button (Will be hidden on print) -->
+    <div class="w-full max-w-4xl flex justify-end mb-4 print-shadow">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition">
+            Print / Save PDF
+        </button>
+    </div>
+
+    <!-- Invoice Main Container -->
+    <div class="w-full max-w-4xl bg-white p-4 md:p-8 rounded-xl shadow-xl border border-slate-200">
+        
+        <!-- Header -->
+        <div class="text-center border-b-2 border-slate-300 pb-3 mb-4">
+            <p class="text-xs tracking-wider text-slate-500 font-medium">|| SRI LAKSHMI NARASIMHA PERUMAL THUNAI ||</p>
+            <h1 class="text-2xl md:text-3xl font-black text-blue-900 mt-1">MKG TRAVELS</h1>
+            <p class="text-xs md:text-sm font-semibold text-slate-600">Tourist & Commercial Vehicle Services</p>
+            <p class="text-xs text-slate-500 mt-1">Phone: 9361819360</p>
+        </div>
+
+        <!-- Bill Meta Info -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm">
+            <div>
+                <label class="text-xs text-slate-500 block">Bill No:</label>
+                <input type="text" class="w-full border-b border-slate-400 focus:outline-none pb-1">
+            </div>
+            <div>
+                <label class="text-xs text-slate-500 block">Date:</label>
+                <input type="date" class="w-full border-b border-slate-400 focus:outline-none pb-1">
+            </div>
+            <div>
+                <label class="text-xs text-slate-500 block">Name:</label>
+                <input type="text" class="w-full border-b border-slate-400 focus:outline-none pb-1">
+            </div>
+            <div>
+                <label class="text-xs text-slate-500 block">Mobile:</label>
+                <input type="text" class="w-full border-b border-slate-400 focus:outline-none pb-1">
+            </div>
+        </div>
+
+        <!-- Trip Info -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm">
+            <div>
+                <label class="text-xs text-slate-500 block">Starting Place:</label>
+                <input type="text" class="w-full border-b border-slate-400 focus:outline-none pb-1">
+            </div>
+            <div>
+                <label class="text-xs text-slate-500 block">Destination:</label>
+                <input type="text" class="w-full border-b border-slate-400 focus:outline-none pb-1">
+            </div>
+            <div class="col-span-2 flex items-center space-x-4 pt-2">
+                <span class="text-xs text-slate-500">Trip Type:</span>
+                <label class="flex items-center space-x-1 text-xs"><input type="checkbox" class="form-checkbox"> <span>Outstation</span></label>
+                <label class="flex items-center space-x-1 text-xs"><input type="checkbox" class="form-checkbox"> <span>Local / Package</span></label>
+            </div>
+        </div>
+
+        <div class="mb-4 text-sm">
+            <label class="text-xs text-slate-500 block">Veh No:</label>
+            <input type="text" value="TN 32 BF 2866" class="w-full md:w-1/4 border-b border-slate-400 focus:outline-none pb-1 font-semibold">
+        </div>
+
+        <!-- KM & Time Details Table -->
+        <div class="bg-slate-800 text-white text-xs font-bold py-1.5 px-3 rounded-t-md mb-0">
+            TRIP DETAILS (KM & TIME)
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-2 border border-slate-300 p-3 rounded-b-md mb-6 text-xs bg-slate-50">
+            <div>
+                <span class="text-slate-500 block">Starting Km</span>
+                <input type="text" class="w-full border-b border-slate-400 bg-transparent">
+            </div>
+            <div>
+                <span class="text-slate-500 block">Starting Time</span>
+                <input type="text" class="w-full border-b border-slate-400 bg-transparent">
+            </div>
+            <div>
+                <span class="text-slate-500 block">Closing Km</span>
+                <input type="text" class="w-full border-b border-slate-400 bg-transparent">
+            </div>
+            <div>
+                <span class="text-slate-500 block">Closing Time</span>
+                <input type="text" class="w-full border-b border-slate-400 bg-transparent">
+            </div>
+            <div>
+                <span class="text-slate-500 block">Total Km Run</span>
+                <input type="text" class="w-full border-b border-slate-400 bg-transparent">
+            </div>
+            <div>
+                <span class="text-slate-500 block">Total Days / Hours</span>
+                <input type="text" class="w-full border-b border-slate-400 bg-transparent">
+            </div>
+        </div>
+
+        <!-- Charges Table -->
+        <div class="overflow-x-auto mb-6">
+            <table class="w-full border-collapse border border-slate-300 text-xs">
+                <thead>
+                    <tr class="bg-slate-800 text-white">
+                        <th class="border border-slate-300 p-2 w-12 text-center">S.No</th>
+                        <th class="border border-slate-300 p-2 text-left">Particulars</th>
+                        <th class="border border-slate-300 p-2 w-24 text-center">Km / Qty</th>
+                        <th class="border border-slate-300 p-2 w-24 text-center">Rate</th>
+                        <th class="border border-slate-300 p-2 w-28 text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="border border-slate-300 p-2 text-center">1</td><td class="border border-slate-300 p-2">Kilometer Charges</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                    <tr><td class="border border-slate-300 p-2 text-center">2</td><td class="border border-slate-300 p-2">Extra Kilometer Charges</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                    <tr><td class="border border-slate-300 p-2 text-center">3</td><td class="border border-slate-300 p-2">Extra Hours Charges</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                    <tr><td class="border border-slate-300 p-2 text-center">4</td><td class="border border-slate-300 p-2">Driver Batta</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                    <tr><td class="border border-slate-300 p-2 text-center">5</td><td class="border border-slate-300 p-2">Toll Gate Charges</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                    <tr><td class="border border-slate-300 p-2 text-center">6</td><td class="border border-slate-300 p-2">Parking Charges</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                    <tr><td class="border border-slate-300 p-2 text-center">7</td><td class="border border-slate-300 p-2">State Permit / Border Tax</td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td><td class="border border-slate-300 p-2"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer / Totals Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start text-sm">
+            <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>Amount in Words:</strong> <input type="text" class="border-b border-slate-400 w-full mt-1 bg-transparent"></p>
+                <ul class="list-disc list-inside pt-2 space-y-1 text-slate-500">
+                    <li>Toll gate & Parking charges extra at actuals.</li>
+                    <li>Please verify meter readings before signing.</li>
+                </ul>
+                <p class="font-semibold text-slate-700 pt-1">GPay / PhonePe: 9940137426</p>
+            </div>
+            
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                <div class="flex justify-between items-center font-medium">
+                    <span>Sub Total:</span>
+                    <input type="text" class="w-32 border-b border-slate-400 text-right bg-transparent">
+                </div>
+                <div class="flex justify-between items-center font-medium">
+                    <span>Less: Advance Paid (-):</span>
+                    <input type="text" class="w-32 border-b border-slate-400 text-right bg-transparent">
+                </div>
+                <div class="flex justify-between items-center font-bold text-blue-900 text-base border-t border-slate-300 pt-2">
+                    <span>Net Balance to Pay:</span>
+                    <input type="text" class="w-32 border-b-2 border-blue-900 text-right bg-transparent font-bold">
+                </div>
+            </div>
+        </div>
+
+        <!-- Signatures -->
+        <div class="flex justify-between items-end mt-12 pt-6 border-t border-slate-300 text-sm">
+            <div class="text-center">
+                <div class="h-10"></div>
+                <p class="border-t border-slate-400 px-8 pt-1 text-xs">Customer Signature</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-blue-900 mb-6">MKG TRAVELS</p>
+                <p class="border-t border-slate-400 px-8 pt-1 text-xs">Driver Signature</p>
+            </div>
+        </div>
+
+    </div>
 
 </body>
-
 </html>
